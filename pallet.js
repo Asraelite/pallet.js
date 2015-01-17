@@ -23,6 +23,15 @@ function Pallet(canvas, options) {
      	context.fill();
 	}
 	
+	// Clear canvas.
+	this.clear = function(x, y, w, h) {
+		if(!h) {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		} else {
+			context.clearRect(x, y, w, h);
+		}
+	}
+	
 	// Set canvas size to canvas element size.
 	this.normalizeSize = function() {
 		var style = window.getComputedStyle(canvas, null);
