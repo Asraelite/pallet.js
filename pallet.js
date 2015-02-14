@@ -39,6 +39,16 @@ function Pallet(canvas, options) {
 		}
 	};
 	
+	// Resize canvas to window.
+	this.fillScreen = function() {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		canvas.style.width = canvas.width + 'px';
+		canvas.style.height = canvas.height + 'px';
+		
+		self.normalizeSize();
+	};
+	
 	// Set canvas size to canvas element size.
 	this.normalizeSize = function() {
 		var style = window.getComputedStyle(canvas, null);
