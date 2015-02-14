@@ -30,7 +30,7 @@ function Pallet(canvas, options) {
 		} else {
 			context.clearRect(x, y, w, h);
 		}
-	}
+	};
 	
 	// Set canvas size to canvas element size.
 	this.normalizeSize = function() {
@@ -38,12 +38,22 @@ function Pallet(canvas, options) {
 		
 		canvas.width = +style.width.replace('px', '');
 		canvas.height = +style.height.replace('px', '');
-	}
+	};
 	
 	// Render single colour unstroked rectangle.
 	this.rect = function(color, x, y, w, h) {
 		context.fillStyle = color;
 		context.fillRect(x, y, w, h);
-	}
+	};
+	
+	// Render text.
+	this.text = function(string, x, y, color, font, size, align, baseline) {
+		context.fillStyle = color || '#fff';
+		if(+size == '' + size) size = size + 'px';
+		context.font = size + ' ' + font;
+		context.textAlign = align || 'left';
+		context.textBaseline = baseline || 'top';
+		context.fillText(string, x, y);
+	};
 }
 
