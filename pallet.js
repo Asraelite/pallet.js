@@ -65,9 +65,17 @@ function Pallet(canvas, options) {
 		context.save();
 	};
 
+	// Set default opacity.
 	this.opacity = function(alpha) {
 		alpha = alpha || 1;
 		context.globalAlpha = alpha;
+	};
+
+	// Draw rectangular outline.
+	this.outline = function(color, x, y, w, h, s) {
+		context.strokeStyle = color;
+		context.lineWidth = s || 1;
+		context.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
 	};
 
 	// Render single colour unstroked rectangle.
