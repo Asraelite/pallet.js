@@ -55,6 +55,40 @@ function Pallet(canvas, options) {
 		self.normalizeSize();
 	};
 
+	// Draw image. If only width is given, it will be used a scale factor.
+	this.image = function (image, x, y, rotation, w, h) {
+		if (typeof image == 'string') {
+			var src = image;
+			var img = new Image();
+			img.src = src;
+		} else {
+			var src = image.src;
+			var img = image;
+		}
+
+		if (w && !h) {
+			w = img.width * w;
+			var h = img.height * w;
+		} else {
+			var w = w || img.width;
+			var h = h || img.height;
+		}
+
+		x = x || 0;
+		y = y || 0;
+		rotation = rotation || 0;
+
+		if (rotation) {
+			context.save();
+			context.translate(x + w / 2, y + h / 2);
+			context.rotate(rotation);
+			context.drawImage(img, -w / 2, -h / 2, w, h);
+			context.restore();
+		} else {
+			context.drawImage(img, x, y, w, h);
+		}
+	};
+
 	// Set canvas size to canvas element size.
 	this.normalizeSize = function() {
 		var style = window.getComputedStyle(canvas, null);
