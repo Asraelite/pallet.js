@@ -118,10 +118,15 @@ function Pallet(canvas, options) {
 		context.fillRect(x, y, w, h);
 	};
 
-	// Restore canvas to original state.
+	// Restore canvas then save again.
 	this.reset = function() {
 		context.restore();
 		context.save();
+	};
+
+	// Just restore.
+	this.restore = function() {
+		context.restore();
 	};
 
 	// Render rect with equal sides.
