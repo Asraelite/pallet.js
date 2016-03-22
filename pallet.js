@@ -104,4 +104,12 @@ function Pallet(canvas, options) {
 		context.textBaseline = baseline || 'top';
 		context.fillText(string, x, y);
 	};
+
+	// Transform canvas.
+	this.view = function (x, y, zoom, rotation) {
+		context.save();
+		context.translate(x, y);
+		context.rotate(rotation);
+		if (zoom) this.context.scale(zoom, zoom);
+	}
 }
