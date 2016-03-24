@@ -17,8 +17,12 @@ function Pallet(canvas, options) {
 	this.canvas = canvas;
 	this.context = context;
 
-	context.webkitImageSmoothingEnabled = options.imageSmoothing || true;
-	context.mozImageSmoothingEnabled = options.imageSmoothing || true;
+	if (!context.imageSmoothingEnabled) {
+		context.webkitImageSmoothingEnabled = options.imageSmoothing || true;
+		context.mozImageSmoothingEnabled = options.imageSmoothing || true;
+	} else {
+		context.imageSmoothingEnabled = options.imageSmoothing || true;
+	}
 
 	context.save();
 
