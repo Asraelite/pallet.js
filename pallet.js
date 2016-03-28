@@ -50,9 +50,9 @@ function Pallet(canvas, options) {
 	}
 
 	// Resize canvas to window.
-	this.fillScreen = function() {
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
+	this.fillScreen = function(minX, minY) {
+		canvas.width = Math.max(window.innerWidth, minX || 0);
+		canvas.height = Math.max(window.innerHeight, minY || 0);
 		canvas.style.width = canvas.width + 'px';
 		canvas.style.height = canvas.height + 'px';
 
